@@ -1,0 +1,351 @@
+<form name="companyDataForm" data-ng-submit="addCompanyData()" data-ng-init="init()">
+    
+        <div class="col-md-6">
+            	<h3 class="dark-grey">Registration</h3>
+            <div class="form-group col-lg-12">
+                <label>Company name</label>
+                 <span style="color:red;">*</span>
+                <input type="text" data-ng-trim="true" name="companyName" maxlength="35" data-ng-minlength ="3" data-ng-pattern="/^[A-Za-z0-9']+( [A-Za-z0-9']+)*$/" title="Valid Company name should not contain special charectors." class="form-control" id="companyName" data-ng-model="companyData.name" required>
+                <span style="color:red;" data-ng-show="companyDataForm.companyName.$error.pattern">Please provide valid name!</span>
+            </div>
+            <div class="form-group col-lg-12">
+                <label>Location</label>
+                 <span style="color:red;">*</span>
+                <input type="text" data-ng-trim="true" name="companyLocation" maxlength="35" data-ng-minlength ="3" data-ng-pattern="/^[A-Za-z']+( [A-Za-z']+)*$/" class="form-control" id="companyLocation" data-ng-model="companyData.location" required>
+                <span style="color:red;" data-ng-show="companyDataForm.companyLocation.$error.pattern">Please provide valid location name!</span>
+            </div>
+            <div class="form-group col-lg-12">
+                <label>Branch</label>
+                <input type="text" data-ng-trim="true" name="branch" maxlength="35" data-ng-minlength ="3" data-ng-pattern="/^[A-Za-z']+( [A-Za-z']+)*$/" class="form-control" id="branch" data-ng-model="companyData.branch" placeholder="(optional)">
+                <span style="color:red;" data-ng-show="companyDataForm.branch.$error.pattern">Please provide valid Branch name!</span>
+            </div>
+            <div class="form-group col-lg-12">
+                <label>Address</label>
+                <span style="color:red;">*</span>
+                <input type="text" name="companyaddress" maxlength="35" data-ng-minlength ="3" data-ng-pattern="/^[a-zA-Z0-9\-\/ ]+$/" class="form-control" id="companyaddress" data-ng-model="companyData.addressLine1" placeholder="address line 1" required></input>
+                <span style="color:red;" data-ng-show="companyDataForm.companyaddress.$error.pattern">Name should not have any special characters or digit!</span>
+            </div>
+            <div class="form-group col-lg-12">
+                <input type="text" name="companyaddress2" maxlength="35" data-ng-minlength ="3" data-ng-pattern="/^[a-zA-Z0-9\-\/ ]+$/" class="form-control" id="companyaddress2" data-ng-model="companyData.addressLine2" placeholder="address line 2(optional)"></input>
+                <span style="color:red;" data-ng-show="companyDataForm.companyaddress2.$error.pattern">Please provide valid address!</span>
+            </div>
+            <div class="form-group col-lg-6">
+                <input type="text" data-ng-trim="true" name="city" maxlength="25" data-ng-minlength ="3" class="form-control" id="city" data-ng-pattern="/^[A-Za-z']+( [A-Za-z']+)*$/" data-ng-model="companyData.city" placeholder="city" required></input>
+                <span style="color:red;" data-ng-show="companyDataForm.city.$error.pattern">Please provide valid City name!</span>
+            </div>
+            <div class="form-group col-lg-6">
+                <input type="text" name="zipCode" id="zipCode" class="form-control" title="A valid zip code example: 411014." data-ng-pattern="/^([0-9]{6})$/" data-ng-model="companyData.zipCode" placeholder="zip code" required />
+                <span style="color:red;" data-ng-show="companyDataForm.zipCode.$error.pattern">Please provide valid Zipcode!</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            	<h3 class="dark-grey">Transport Manager Contact</h3>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group col-lg-12">
+                        <label>Transport manager name</label>
+                         <span style="color:red;">*</span>
+                        <input type="text" data-ng-trim="true" name="contactPerson" data-ng-minlength ="3" maxlength="35" class="form-control" id="contactPerson" data-ng-model="companyData.contactPerson" data-ng-pattern="/^[A-Za-z']+( [A-Za-z']+)*$/" required>
+                        <span style="color:red;" data-ng-show="companyDataForm.contactPerson.$error.pattern">Please provide a valid Name!</span>
+                    </div>
+                   
+                    <div class="form-group col-lg-12">
+                        <label>Contact Number</label>
+                        <span style="color:red;">*</span>
+                        <div class="input-group">
+					      <span class="input-group-addon">+91</span>
+					      <input id="contactNo" name="contactNo" class="form-control" placeholder="" type="text"  data-ng-pattern="/^\d{10}$/" required data-ng-model="companyData.contactNo" >
+					    </div>
+                        <span style="color:red;" data-ng-show="companyDataForm.contactNo.$error.pattern"> Please provide valid number!</span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label>Email</label>
+                        <span style="color:red;">*</span>
+                        <input type="email" name="pocemail" class="form-control" id="pocemail" data-ng-model="companyData.email" required placeholder="abc@test.com">
+                        <span style="color:red;" data-ng-show="companyDataForm.pocemail.$error.email">Please provide valid email ID!</span>                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+    <div class="page-header">
+        <div style="height: 2px; background-color: black; text-align: center">	<span style="background-color: white; position: relative; top: -0.5em;">
+				Add Package </span>
+
+        </div>
+        <div class="pull-right">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default btn-group success" data-toggle="modal" data-ng-click="assignPackage(-1)" data-target="#selectPackageModal">Select Package</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default btn-group success" data-toggle="modal" data-ng-click="createPackage()" data-target="#addPackageModal">Package Registration</button>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="table-responsive">
+        <!-- <div class="alert alert-warning alert-dismissible" role="alert">{{scope.status}}</div> -->
+        <!-- Table -->
+        <table class="table table-striped table-bordered table-condense">
+            <tr>
+                <th>Vehicle Type</th>
+                <th>Package Type</th>
+                <th>Package Description</th>
+            </tr>
+            <tr data-ng-repeat="package in companyData.packages">
+                <td>{{package.vehicleType}}</td>
+                <td>{{package.packageType}}</td>
+                <td>{{package.packageDescription}}</td>
+                <td>
+                    <button type="button" class="btn btn-default" aria-label="Left Align" data-ng-click="editPackage($index)" data-toggle="modal" data-target="#addPackageModal">	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+
+                    </button>
+                    <button type="button" class="btn btn-default" aria-label="Left Align" data-ng-click="deletePackage($index)">	<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+
+                    </button>
+                </td>
+            </tr>
+            <tr data-ng-if="companyData.packages.length <= 0">
+                <td colspan=3><span style="padding-left: 40%;">No items to show.</span>
+                </td>
+            </tr>
+        </table>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" data-ng-click="resetCompanyData()">Reset</button>
+            <button type="submit" class="btn btn-info btn-default" data-ng-disabled="companyDataForm.$invalid || companyData.packages.length <= 0">Save</button>
+            <!--<button type="submit" class="btn btn-info btn-default" data-ng-click="createUser()">Add</button>-->
+        </div>
+    </div>
+</form>
+<!-- Add package dialog view-->
+<div class="modal fade" id="addPackageModal" tabindex="-1" role="dialog" aria-labelledby="addPackageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" data-ng-app="myApp">
+        <div class="modal-content">
+            <form id="addPackage" data-toggle="validator" class="form-horizontal" data-ng-submit="addOrUpdatePackage(packageInstance.index)" role="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">	<span aria-hidden="true">&times;</span>  <span class="sr-only">Close</span>
+
+                    </button>
+                    	<h4 class="modal-title" id="registrationModalLabel" style="text-align: center;">Package Registration</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group has-feedback">
+                        <label for="vehicleType" class="col-sm-4 control-label">Vehicle Type</label>
+                        <div class="col-sm-4">
+                            <select id="vehicleType" name="vehicleType" class="input-xlarge form-control" data-ng-model="packageInstance.vehicleType" data-ng-options="o for o in fetchedVehicleTypes" required>
+                               <option value="">-select-</option>
+               				 </select>
+                        </div>
+                        <label for="price" class="col-sm-1 control-label">Price</label>
+                        <div class="col-sm-3">
+                            <input type="number"  class=" padding-right form-control" title="Valid price should not contain special characters and alphabets."
+                            data-ng-model="packageInstance.price" id="price" min="1" max="9999999" placeholder="--Rs--" required>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4" data-ng-show="packageInstance.vehicleType == 'other'">
+                            <input class="form-control" type="text" name="NewValue" data-ng-model="packageInstance.othervehicleType" placeholder="ValidvehicleType" />
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label for="packageType" class="col-sm-4 control-label">Package Type</label>
+                        <div class="col-sm-4">
+                            <select id="packageType" name="packageType" class="input-xlarge form-control" data-ng-model="packageInstance.packageType" data-ng-options="o for o in fetchedPackageTypes" required>
+                               <option value="">-select-</option>
+                			</select>
+                        </div>
+                          <!-- <label for="unit" class="col-sm-1 control-label">Unit</label>
+                        <div class="col-sm-3">
+                            <input type="number" class=" padding-right form-control" data-ng-model="packageInstance.unit" id="unit" min="0" max="999999" required>
+                        </div>
+                    </div>-->
+                    
+                    
+                     <!-- modified -->
+	                        
+	                        
+	                         <label for="unit" class="col-sm-1 control-label" >Unit</label>
+                        <div class="col-sm-3">
+                            <select id="unit" name="unit" class="input-xlarge form-control" data-ng-model="packageInstance.unit" required >
+                               <option value="">--select unit--</option>
+                                <option value="perTrip">perTrip</option>
+                                <option value="Monthly">daily</option>
+                                <option value="Weekly">Weekly</option>
+                                <option value="other">other</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+                    
+                     <div class="form-group has-feedback">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-3"
+							data-ng-show="packageInstance.unit == 'other'">
+							<input class="form-control" type="text" name="NewValue"
+								 placeholder="valid unit" data-ng-model="packageInstance.otherunit" placeholder="ValidUnit" />
+						</div>
+                    
+                    </div>
+                    
+                    
+                    
+                    <div class="form-group has-feedback">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4" data-ng-show="packageInstance.packageType == 'other'">
+                            <input class="form-control" type="text" name="NewValue" data-ng-model="packageInstance.otherpackageType" placeholder="ValidpackageType"/>
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>
+                    <div style="height: 2px; background-color: black; text-align: center">	<span style="background-color: white; position: relative; top: -0.5em;">
+							Limits </span>
+
+                    </div><br>
+                    <div class="form-group has-feedback" style="margin-top: 2%;">
+                        <label for="tripType" class="col-sm-4 control-label">Trip Type</label>
+                        <div class="col-sm-4">
+                            <select id="tripType" name="tripType" class="input-xlarge form-control" data-ng-model="packageInstance.packageLimits.tripType" required>
+                                <option value="">None</option>
+                                <option>1-way</option>
+                                <option>2-way</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Time Modifications -->
+                     <div class="form-group has-feedback">
+                        <label for="timeInHours" class="col-sm-4 control-label">Time(Hours)</label>
+                        <div class="col-sm-4">
+                            
+                        <select data-ng-kendo-combo-box style="width: 100%" class="input-xlarge form-control" data-ng-model="packageInstance.packageLimits.timeInHours" required >
+                        <option value="">--select time--</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                               
+                            </select>
+                        
+                        
+                        
+                        </div>
+                    </div>
+                    
+                    
+            
+                    <div class="form-group has-feedback">
+                        <label for="distanceInKm" class="col-sm-4 control-label">Distance(km)</label>
+                        <div class="col-sm-4">
+                            <input type="number" name="distanceInKm" class=" padding-right form-control" data-ng-model="packageInstance.packageLimits.distanceInKm" id="distanceInKm" min="1" max="999999" placeholder="00000" title="Enter valid distInKm"required>
+                          
+                        </div>
+                    </div>
+                    
+                  
+                    
+                    
+                    
+                    
+                    
+                    <div class="form-group has-feedback">
+                        <label for="numDays" class="col-sm-4 control-label">No Of Days</label>
+                        <div class="col-sm-4">
+                            <input type="number" class=" padding-right form-control" data-ng-model="packageInstance.packageLimits.numDays" id="numDays" min="1" max="99999" data-ng-minlength="1" data-ng-maxlenghth="999999"  placeholder="00000" required/>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label for="weeks" class="col-sm-4 control-label">Week</label>
+                        <div class="col-sm-4">
+                            <select id="weeks" name="weeks" class="input-xlarge form-control" data-ng-model="packageInstance.packageLimits.weeks" multiple="multiple" required>
+                                <option value="SUNDAY">SUNDAY</option>
+                                <option value="MONDAY">MONDAY</option>
+                                <option value="TUESDAY">TUESDAY</option>
+                                <option value="WEDNESDAY">WEDNESDAY</option>
+                                <option value="THURSDAY">THURSDAY</option>
+                                <option value="FRIDAY">FRIDAY</option>
+                                <option value="SATURDAY">SATURDAY</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="height: 2px; background-color: black; text-align: center">	<span style="background-color: white; position: relative; top: -0.5em;">
+							Additional Charges </span>
+
+                    </div>
+                    <div class="form-group has-feedback" style="margin-top: 2%;">
+                        <label for="perKM" class="col-sm-4 control-label">PerKM</label>
+                        <div class="col-sm-4">
+                            <input type="number" class=" padding-right form-control" data-ng-model="packageInstance.packageAdditionalCharges.perKm" id="perKM" min="1" max="100" placeholder="000" title="Enter valid perKM" required>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label for="perHour" class="col-sm-4 control-label">PerHR</label>
+                        <div class="col-sm-4">
+                            <input type="number" class=" padding-right form-control" data-ng-model="packageInstance.packageAdditionalCharges.perHour" id="perHour" min="1" max="999" placeholder="000" title="Enter valid number" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-ng-click="resetPackageInstance()">Reset</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-info btn-default" data-ng-click="savePackageInstance()">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- select package dialog view-->
+<div class="modal fade" id="selectPackageModal" tabindex="-1" role="dialog" aria-labelledby="selectPackageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" data-ng-app="myApp">
+        <div class="modal-content">
+            <form name="selectPackage" id="selectPackage" data-toggle="validator" class="form-horizontal" data-ng-submit="addSelectedPackage()" role="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">	<span aria-hidden="true">&times;</span>  <span class="sr-only">Close</span>
+
+                    </button>
+                    	<h4 class="modal-title" id="registrationModalLabel" style="text-align: center;" >Select Package</h4>
+`				</div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <!-- Table -->
+                        <table class="table table-striped table-bordered table-condense">
+                            <tr>
+                                <th></th>
+                                <th>Vehicle Type</th>
+                                <th>Package Type</th>
+                                <th>Package Description</th>
+                            </tr>
+                            <tr data-ng-repeat="package in existingPackages">
+                                <td>
+                                    <input type="checkbox" data-ng-click="package.checked=!package.checked;isAnyItemSelected()" data-ng-checked="package.checked">
+                                </td>
+                                <td>{{package.vehicleType}}</td>
+                                <td>{{package.packageType}}</td>
+                                <td>{{package.packageDescription}}</td>
+                            </tr>
+                            <tr data-ng-if="existingPackages.length <= 0">
+                                <td colspan=4><span style="padding-left: 40%;">There is no available packages in the system,Please create package</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-info btn-default" data-ng-disabled="!isItemSelected || existingPackages.length <= 0">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

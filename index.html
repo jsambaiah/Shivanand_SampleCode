@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="app" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Lead Fleet</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="app.css">
+<link type="text/css" rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.css">
+<script src="vendors/jquery/dist/jquery.min.js"></script>
+<script src="vendors/bootstrap/dist/js/bootstrap.js"></script>
+<link type="text/css" rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+<script data-require="angular.js@1.2.10" data-semver="1.2.10" src="http://code.angularjs.org/1.2.10/angular.js"></script>
+<script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+<script src="app.js"></script>
+</head>
+<body>
+	<div class="container" data-ng-app="app">
+		<div data-ng-include="'nav.html'"></div>
+		<div class="container">
+			<div class="row" style="margin-top: 70px;">
+				<div class="col-sm-3 col-md-3 sidebar">
+					<ul class="nav nav-sidebar">
+						<li class="active"><a href="#/vehicle">Vehicle <span
+								class="sr-only">(current)</span></a></li>
+						<li><a href="#/route">Route</a></li>
+						<li><a href="#/route_details">Route details</a></li>
+						<li><a href="#/user">User</a></li>
+						<li><a href="#/package">Package Registration</a></li>
+						<li><a href="#/add_company">Company Registration</a></li>
+						<li><a href="#/add_employee">Generate Roster</a></li>
+						<li><a href="#/duty_log">Generate Duty Log</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-9  col-md-9 main">
+					<div class="navbar-collapse collapse">
+						<div ui-view></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Framework -->
+	<script src="vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+		
+	<!-- Application -->
+	<script src="components/vehicle/vehicle.js"></script>
+	<script src="components/route/route.js"></script>
+	<script src="components/route_details/route_details.js"></script>
+	<script src="components/customer/customer.js"></script>
+	<script src="components/user/user.js"></script>
+	<script src="components/package/package.js"></script>
+	<script src="components/version/version.js"></script>
+	<script src="components/version/version-directive.js"></script>
+	<script src="components/version/interpolate-filter.js"></script>
+	<script src="components/add_company/addCompany.js"></script>
+	<script src="components/add_employee/employee.js"></script>
+	<script src="components/duty_log/dutyLog.js"></script>
+</body>
+</html>
